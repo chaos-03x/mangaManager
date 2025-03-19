@@ -2,17 +2,21 @@
   "name": "mangamanager",
   "version": "1.0.0",
   "description": "manga,comic etc.. manage tool",
-  "main": "main.js",
+  "main": "./src/main/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "dev": "vite",
+    "build": "vite build"
   },
   "author": "chaos",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^35.0.1"
+    "electron": "^35.0.1",
+    "vite": "^6.2.2"
   },
   "dependencies": {
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7",
+    "vue": "^3.5.13"
   }
 }
