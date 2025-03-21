@@ -6,3 +6,8 @@ function getAllMangas() {
     const stmt = db.prepare('SELECT * FROM mangas');
     return stmt.all();
 }
+
+function getMangaById(id) {
+    const stmt = db.prepare('SELECT * FROM mangas WHERE id = ?');
+    return stmt.get(id);
+}
