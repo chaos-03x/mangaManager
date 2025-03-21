@@ -4,7 +4,7 @@ const Database = require('better-sqlite3');
 const path = require('path');
 
 const dbPath = path.join(__dirname, '../../manga.db'); // 数据库文件路径
-const db = new Database(dbPath, { verbose: console.log }); // 创建数据库连接，启用日志输出
+const db = new Database(dbPath, { verbose: console.log }); // 创建(连接)数据库，启用日志输出
 
 // 创建漫画表,存储漫画的本地数据和基本信息
 db.exec(`
