@@ -6,6 +6,7 @@
             <a href="#">我的漫画</a>
         </nav>
         <div>
+            <button @click="scanMangas">扫描漫画</button>
             <!-- 这里将显示漫画列表 -->
             <manga-list />
         </div>
@@ -14,6 +15,7 @@
 
 <script>
 import MangaList from './components/MangaList.vue';
+import { ipcRenderer  } from 'electron';
 
 export default {
     components: {
