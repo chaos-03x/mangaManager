@@ -1,4 +1,6 @@
-// Description: 封装对漫画表的数据库操作。
+/**
+ * Description: 封装对漫画表的增删改查操作。
+ */
 
 const db = require('../index.js');
 

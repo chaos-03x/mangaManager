@@ -1,4 +1,6 @@
-// Description: 数据库初始化脚本，创建SQLite数据库和表结构
+/**
+ * Description: 数据库初始化脚本，创建SQLite数据库和表结构
+ */
 
 const Database = require('better-sqlite3');
 const path = require('path');
@@ -10,7 +12,7 @@ const db = new Database(dbPath, { verbose: console.log }); // 创建(连接)数�
 db.exec(`
     CREATE TABLE IF NOT EXISTS mangas (
         id INTEGER PRIMARY KEY AUTOINCREMENT, -- 自增主键
-        title TEXT NOT NULL, -- 漫画标题
+        title TEXT NOT NULL, -- 漫画标题 (来源于文件名)
         path TEXT NOT NULL, -- 漫画文件路径
         pages INTEGER, -- 漫画页数
         size REAL -- 漫画文件大小 (单位: MB)
@@ -23,7 +25,7 @@ db.exec(`
         id INTEGER PRIMARY KEY AUTOINCREMENT, -- 自增主键
         manga_id INTEGER NOT NULL, -- 漫画ID, 外键关联mangas表
         
-        title TEXT NOT NULL, -- 漫画标题
+        title TEXT, -- 漫画标题
         alt_title TEXT, -- 漫画的其他标题
         language TEXT, -- 漫画语言
         category TEXT, -- 漫画分类
@@ -31,6 +33,7 @@ db.exec(`
         character TEXT, -- 漫画中的角色
 
         hitomi_id INTEGER, -- 漫画在Hitomi上的ID
+
         -- 以下为冗余字段, 用于存储高频筛选条件，以提高查询效率
         artist TEXT, -- 作者名
         parody TEXT, -- 漫画的原作

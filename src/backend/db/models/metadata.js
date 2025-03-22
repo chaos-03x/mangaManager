@@ -1,4 +1,6 @@
-// Description: 封装对元数据表的数据库操作。
+/**
+ * Description: 封装对元数据表的增删改查操作。
+ */
 
 const db = require('../index.js');
 
@@ -29,6 +31,7 @@ function updateMetadata(id, updates) {
     const info = stmt.run(title, alt_title, language, category, group_name, character, hitomi_id, artist, parody, tags, id);
     return info.changes;
 }
+
 
 module.exports = {
     getMetadataByMangaId,
