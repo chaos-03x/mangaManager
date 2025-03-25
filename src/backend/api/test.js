@@ -9,7 +9,7 @@ const DIR = "C:/Users/z.chaos/Downloads/Test"
 async function isDir(filePath) {
     const stat = await fs.stat(filePath);
     console.log(stat);
-    stat.
+    // stat.
     return stat.isDirectory();
 }
 
