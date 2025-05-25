@@ -15,12 +15,21 @@
 
 <script>
 import MangaList from './components/MangaList.vue';
-import { ipcRenderer  } from 'electron';
 
 export default {
     components: {
         MangaList,
     },
+    methods: {
+        scanMangas() {
+            window.electronAPI.scanMangas();
+        }
+    },
+    mounted() {
+        window.electronAPI.onMangasUpdated((event, mangas) => {
+            console.log('Mangas updated:', mangas);
+        });
+    }
 };
 </script>
 
@@ -32,8 +41,15 @@ h1 {
 nav {
     margin: 10px 0;
 }
-
 nav a {
     margin-right: 10px;
+}
+button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 </style>
