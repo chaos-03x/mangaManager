@@ -21,9 +21,7 @@ export default {
         MangaList,
     },
     methods: {
-        scanMangas() {
-            window.electronAPI.scanMangas();
-        }
+        
     },
     mounted() {
         window.electronAPI.onMangasUpdated((event, mangas) => {
