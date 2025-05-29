@@ -13,7 +13,21 @@
     </div>
 </template>
 
-<script>
+<script setup>
+import MangaList from './components/MangaList.vue'
+import { onMounted } from 'vue';
+
+function scanMangas(){
+    window.electronAPI.scanMangas();
+}
+
+onMounted(window.electronAPI.onMangasUpdated((event, mangas) => {
+    console.log('mangas updated', mangas)
+}))
+
+</script>
+
+<!-- <script>
 import MangaList from './components/MangaList.vue';
 
 export default {
@@ -31,7 +45,7 @@ export default {
         });
     }
 };
-</script>
+</script> -->
 
 <style>
 h1 {
@@ -41,9 +55,11 @@ h1 {
 nav {
     margin: 10px 0;
 }
+
 nav a {
     margin-right: 10px;
 }
+
 button {
     padding: 5px 10px;
     background-color: #007bff;
