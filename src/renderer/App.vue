@@ -27,23 +27,6 @@ onMounted(window.electronAPI.onMangasUpdated((event, mangas) => {
 
 </script>
 
-<!-- <script>
-import MangaList from './components/MangaList.vue';
-
-export default {
-    components: {
-        MangaList,
-    },
-    methods: {
-        
-    },
-    mounted() {
-        window.electronAPI.onMangasUpdated((event, mangas) => {
-            console.log('Mangas updated:', mangas);
-        });
-    }
-};
-</script> -->
 
 <style>
 h1 {
