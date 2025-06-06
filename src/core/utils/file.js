@@ -13,14 +13,14 @@ class FileUtils {
      * @param {string} dirPath - 要扫描的目录路径。
      * @returns {Promise<string[]>} - 一个包含所有子目录名称的数组。如果出错则返回空数组。
      */
-    static async scanSubDirectory(dirPath){
+    static async scanSubDirectory(dirPath) {
         try {
             const entries = await fs.readdir(dirPath)
             const subDirectories = []
             for (const entry of entries) {
-                const entryPath = path.join(dirPath,entry)
+                const entryPath = path.join(dirPath, entry)
                 const entryStat = await fs.stat(entryPath)
-                if (entryStat.isDirectory()){
+                if (entryStat.isDirectory()) {
                     subDirectories.push(entry)
                 } else {
                     continue
@@ -28,7 +28,7 @@ class FileUtils {
             }
             return subDirectories
         } catch (error) {
-            console.warn(`FileUtiles: "scanSubDirectory()" error:${error.message}`);
+            console.warn(`FileUtiles: "scanSubDirectory()":${error.message}`);
             return []
         }
     }
@@ -45,18 +45,18 @@ class FileUtils {
             const entries = fs.readdir(dirPath)
             let fileCount = 0
             for (const entry of entries) {
-                const entryPath = path.join(dirPath,entry)
+                const entryPath = path.join(dirPath, entry)
                 const entryStat = await fs.stat(entryPath)
-                if(entryStat.isFile()){
+                if (entryStat.isFile()) {
                     const ext = path.extname(entryPath).toLowerCase()
-                    if(extensions.includes(ext)){
+                    if (extensions.includes(ext)) {
                         fileCount++
                     }
                 }
             }
             return count
         } catch (error) {
-            console.warn(`FileUtiles: "countFilesByExtension()" error:${error.message}`);
+            console.warn(`FileUtiles: "countFilesByExtension()":${error.message}`);
             return 0
         }
     }
@@ -67,8 +67,14 @@ class FileUtils {
      * @param {string} itemPath - 路径。
      * @returns {Promise<boolean>} - 如果是目录则返回 true，否则返回 false。
      */
-    static async isDirectory(itemPath){
-        
+    static async isDirectory(itemPath) {
+        try {
+            const itemStat = await fs.stat(itemPath)
+            return itemStat.isDirectory()
+        } catch (error) {
+            console.warn(`FileUtiles: "isDirectory()":${error.message}`);
+            return false
+        }
     }
 
 
@@ -77,6 +83,15 @@ class FileUtils {
      * @param {string} itemPath - 路径。
      * @returns {Promise<boolean>} - 如果是文件则返回 true，否则返回 false。
      */
+    static async isFile(itemPath) {
+        try {
+            const itemStat = await fs.stat(itemPath)
+            return itemStat.file()
+        } catch (error) {
+            console.warn(`FileUtiles: "isDirectory()":${error.message}`);
+            return false
+        }
+    }
 
 }
 
