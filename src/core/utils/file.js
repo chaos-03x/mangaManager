@@ -11,7 +11,8 @@ class FileUtils {
     /**
      * 扫描指定目录下的所有子目录名称。
      * @param {string} dirPath - 要扫描的目录路径。
-     * @returns {Promise<string[]>} - 一个包含所有子目录名称的数组。如果出错则返回空数组。
+     * @returns {Promise<string[]>} - 一个包含所有子目录名称的数组。如果出错则
+     * 。
      */
     static async scanSubDirectory(dirPath) {
         try {

@@ -1,12 +1,10 @@
+/**
+ * Description: 数据库的API接口，提供对漫画数据的增删改查操作。
+ */
 // 需重构：
 // - 从纯函数升级为类（便于扩展和依赖注入）。
 // - 方法改为静态（无需实例化即可调用）。
 
-
-
-/**
- * Description: 数据库的API接口，提供对漫画数据的增删改查操作。
- */
 
 const mangaModel = require('../db/models/manga.js');
 const metadataModel = require('../db/models/metadata.js');
