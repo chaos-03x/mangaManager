@@ -4,8 +4,8 @@
  */
 
 class MangaSeries {
-  constructor(name, id, path, pageNum = 0) {
-    this.name = name,
+  constructor(title, id, path, pageNum = 0) {
+      this.title = title,
       this.id = id,
       this.path = path,
       this.pageNum = pageNum
