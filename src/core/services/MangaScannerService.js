@@ -30,8 +30,8 @@ class MangaScannerService {
             const authorEntry = new AuthorEntry(authorName)
             const authorFullPath = path.join(libraryPath, authorFolderName)
 
-            const seriesFolederNames = await FileUtils(authorFullPath)
-            for (seriesFolderName of seriesFolederNames) {
+            const seriesFolderNames = await FileUtils.scanSubDirectory(authorFullPath)
+            for (const seriesFolderName of seriesFolderNames) {
                 const seriesPath = path.join(authorFullPath, seriesFolderName)
                 if (!(await FileUtils.isDirectory(seriesPath))) {
                     continue

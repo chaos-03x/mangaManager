@@ -1,7 +1,9 @@
 const { ipcMain } = require('electron')
 const MangaScannerService = require('../../core/services/MangaScannerService')
 
-ipcMain.handle('scan-mangas', async(event, libraryPath) => {
+
+function setupMangaHandlers() {
+    ipcMain.handle('scan-mangas', async(event, libraryPath) => {
     console.log(`IPC 'scan-mangas' 接收到路径: ${libraryPath}`);
     if(!libraryPath || typeof libraryPath !== 'string') {
         console.error('IPC scan-mangas: 无效的 libraryPath');
@@ -20,23 +22,14 @@ ipcMain.handle('scan-mangas', async(event, libraryPath) => {
         throw new Error(`扫描漫画库时发生错误: ${error.message}`)
     }
 })
-
-// 如果你有其他与漫画相关的 IPC 处理器，也可以放在这里。
-// 例如，未来获取漫画详情、保存漫画信息等。
-
-// 如果你决定使用一个 setup 函数模式 (如朋友方案中的 mangaHandlers.js):
-/*
-function setupMangaHandlers() {
-    ipcMain.handle('scan-mangas', async (event, libraryPath) => {
-        // ... (如上实现)
-    });
-    // ... 其他 handlers
 }
-module.exports = { setupMangaHandlers };
+
+module.exports = {setupMangaHandlers}
+
+
 // 然后在你的 main/index.js 中:
 // const { setupMangaHandlers } = require('./ipc/mangaHandlers.js');
 // app.whenReady().then(() => {
 //   createWindow();
 //   setupMangaHandlers();
 // });
-*/

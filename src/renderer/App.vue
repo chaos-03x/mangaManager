@@ -6,24 +6,19 @@
             <a href="#">我的漫画</a>
         </nav>
         <div>
-            <button @click="scanMangas">扫描漫画</button>
             <!-- 这里将显示漫画列表 -->
-            <manga-list />
+            <MangaList/>
         </div>
     </div>
 </template>
 
-<script setup>
+<script>
 import MangaList from './components/MangaList.vue'
 import { onMounted } from 'vue';
 
-function scanMangas(){
-    window.electronAPI.scanMangas();
+export default {
+    components: {MangaList}
 }
-
-onMounted(window.electronAPI.onMangasUpdated((event, mangas) => {
-    console.log('mangas updated', mangas)
-}))
 
 </script>
 
