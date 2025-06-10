@@ -43,7 +43,7 @@ class FileUtils {
      */
     static async countFilesByExtension(dirPath, extensions = ['.webp']) {
         try {
-            const entries = fs.readdir(dirPath)
+            const entries = await fs.readdir(dirPath)
             let fileCount = 0
             for (const entry of entries) {
                 const entryPath = path.join(dirPath, entry)
@@ -55,7 +55,7 @@ class FileUtils {
                     }
                 }
             }
-            return count
+            return fileCount
         } catch (error) {
             console.warn(`FileUtiles: "countFilesByExtension()":${error.message}`);
             return 0

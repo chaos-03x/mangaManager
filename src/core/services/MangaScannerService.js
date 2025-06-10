@@ -64,11 +64,11 @@ class MangaScannerService {
         }
 
         const [, title, id] = match
-        title = title.trim()
-        id = id.trim()
+        let titleTrimed = title.trim()
+        let idTrimed = id.trim()
         const imageCount = await FileUtils.countFilesByExtension(seriesFullPath,['.webp'])
 
-        return new MangaSeries(title,id,seriesFullPath,imageCount)
+        return new MangaSeries(titleTrimed,idTrimed,seriesFullPath,imageCount)
     }
 }
 

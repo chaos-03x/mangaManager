@@ -11,11 +11,11 @@
         <div v-if="authors.length > 0">
             <h3>扫描结果:</h3>
             <ul>
-                <li v-for="author in authors" :key="author.name">
-                    <h4>{{ author.name }} ({{ author.series.length }} 部作品)</h4>
+                <li v-for="author in authors" :key="author.author">
+                    <h4>{{ author.author }} ({{ author.series.length }} 部作品)</h4>
                     <ul>
                         <li v-for="series in author.series" :key="series.id">
-                            {{ series.name }} (ID: {{ series.id }}, {{ series.imageCount }} 页) - Path: {{ series.path }}
+                            {{ series.title }} (ID: {{ series.id }}, {{ series.pageNum }} 页) - Path: {{ series.path }}
                         </li>
                     </ul>
                 </li>
